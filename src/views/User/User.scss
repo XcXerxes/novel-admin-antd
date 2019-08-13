@@ -1,0 +1,10 @@
+.form {
+  width: 368px;
+  margin: 0 auto;
+  @media screen and (max-width: 576px) {
+    width: 95%;
+  }
+}
+.submit {
+  width: 100%;
+}

@@ -1,0 +1,116 @@
+.activityWrap {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.salesExtraWrap {
+  display: flex;
+  align-items: center;
+  padding-right: 24px;
+}
+
+.salesExtra {
+  padding-right: 24px;
+  a{
+    color: rgba(0,0,0,.65);
+    margin-left: 24px;
+    &.currentDate {
+      color: #1890ff;
+    }
+  }
+}
+.salesTabs {
+  :global {
+    .ant-tabs-extra-content {
+      line-height: 55px;
+    }
+    .ant-tabs-bar {
+      padding-left: 16px;
+    }
+  }
+}
+.salesBar {
+  padding: 0 0 32px 32px;
+}
+
+.salesRank {
+  padding: 0 32px 32px 72px;
+}
+.rankingList {
+  margin: 25px 0 0;
+  padding: 0;
+  >li {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    .rankingLeft {
+
+    }
+    span {
+      color: rgba(0,0,0,.65);
+      font-size: 14px;
+      line-height: 22px;
+      &:first-child {
+        border-radius: 20px;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 24px;
+        height: 20px;
+        line-height: 20px;
+        width: 20px;
+        text-align: center;
+        background-color: #f5f5f5;
+        &.rankingActive {
+          background-color: #314659;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+.rankingActive {
+
+}
+.iconGroup {
+  >i {
+    transition: all .3s ease;
+    color: rgba(0, 0, 0, .45);
+    cursor: pointer;
+    margin-left: 16px;
+    &:hover {
+      color: rgba(0, 0, 0, .65);
+    }
+  }
+}
+
+.salesCard {
+  :global{
+    .ant-card-head{
+      position: relative;
+    }
+    .ant-card-head-wrapper {
+      align-items: initial;
+    }
+  } 
+}
+.salesCardExtra {
+  height: 68px;
+}
+.salesTypeRadio {
+  position: absolute;
+  left: 24px;
+  bottom: 15px;
+}
+
+.offlineCard{
+  :global {
+    .ant-tabs-ink-bar {
+      bottom: auto;
+    }
+    .ant-tabs-bar {
+      border-bottom: none;
+    }
+  }
+}

@@ -1,0 +1,113 @@
+.pageHeaderContent {
+  display: flex;
+}
+.avatar {
+  flex: 0 1 72px;
+  margin-bottom: 8px;
+  >span {
+    display: flex;
+    width: 72px;
+    height: 72px;
+  }
+}
+.content {
+  margin-left: 24px;
+  flex: 1 1 auto;
+  color: rgba(0,0,0,.45);
+  line-height: 22px;
+  padding-top: 4px;
+}
+.contentTitle {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  color: rgba(0,0,0,.85);
+  margin-bottom: 12px;
+}
+.contentCaption {
+
+}
+
+.extraContent {
+  display: flex;
+  margin-bottom: 28px;
+  .statItem {
+    padding:  0 32px;
+    position: relative;
+    p {
+      color: rgba(0,0,0,.85);
+      font-size: 30px;
+      line-height: 38px;
+      margin: 0;
+      >span {
+        color: rgba(0,0,0,.45);
+        font-size: 20px;
+      }
+      &:first-child {
+        color: rgba(0,0,0,.45);
+        font-size: 14px;
+        line-height: 22px;
+        margin-bottom: 4px;
+      }
+    }
+    &:after {
+      background-color: #e8e8e8;
+      position: absolute;
+      top: 8px;
+      right: 0;
+      width: 1px;
+      height: 40px;
+      content: '';
+    }
+    &:last-child {
+      padding-right: 0;
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+.activeCard{
+  .activitiesList {
+    padding: 0 24px 8px;
+    .username {
+      color: rgba(0,0,0,.65);
+    }
+    .event {
+      font-weight: 400;
+    }
+    .datetime {
+      color: rgba(0,0,0,.25);
+    }
+    :global {
+      .ant-list-item-meta-title {
+        color: rgba(0,0,0,.65);
+        font-size: 14px;
+        line-height: 22px;
+        margin-bottom: 4px;
+      }
+    }
+  }
+}
+
+.members {
+  a {
+    display: block;
+    height: 24px;
+    margin: 12px 0;
+    line-height: 24px;
+  }
+  .member {
+    line-height: 24px;
+    font-size: 14px;
+    color: rgba(0,0,0,.65);
+    max-width: 100px;
+    vertical-align: top;
+    display: inline-block;
+    margin-left: 12px;
+    transition: all .3s ease;
+    &:hover {
+      color: #40a9ff;
+    }
+  }
+}

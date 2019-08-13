@@ -1,0 +1,1 @@
+export const mapChart: string;

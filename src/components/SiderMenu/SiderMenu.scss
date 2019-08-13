@@ -1,0 +1,20 @@
+.container {
+  min-height: 100vh;
+}
+.logoContent {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  background-color: #002140;
+  height: 64px;
+}
+.logoContent>img {
+  height: 32px;
+}
+.logoContent>h3 {
+  font-size: 20px;
+  margin-left: 12px;
+  color: #fff;
+  white-space: nowrap;
+}
+

@@ -1,0 +1,10 @@
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: rgba(0, 0, 0, .45);
+}
+.field>span:last-child {
+  margin-left: 8px;
+  color: rgba(0, 0, 0, .85);
+}

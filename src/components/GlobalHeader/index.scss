@@ -1,0 +1,48 @@
+.header {
+  height: 64px;
+  padding-right: 12px;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+i.trigger {
+  font-size: 20px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: all .3s ease;
+  &:hover {
+    background: #e6f7ff;
+  }
+}
+
+.right {
+  height: 100%;
+}
+
+.action {
+  cursor: pointer;
+  padding: 0 12px;
+  transition: all .3s ease;
+  display: inline-block;
+  height: 100%;
+  &:hover {
+    background: #e6f7ff;
+  }
+}
+.account {
+
+}
+.name {
+
+}
+
+.menu {
+  margin-right: 8px;
+  width: 160px;
+}
