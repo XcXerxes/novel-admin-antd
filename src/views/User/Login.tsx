@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { Form, Icon, Input, Button } from 'antd'
 import * as styles from './User.scss'
-import { connect } from 'react-redux'
-import {sigin} from '../../redux/actions/user'
+import * as User from '../../api/User'
 
 type Props = {
   form: any;
@@ -30,7 +29,7 @@ class Login extends React.PureComponent<Props, State> {
         this.setState({ loading: true })
         try {
           const {username, password} = values
-          const result = await this.props.sigin({username, password})
+          const result = await User.signin({username, password})
           console.log(result)
           setTimeout(() => {
             this.setState({ loading: false })
@@ -59,7 +58,7 @@ class Login extends React.PureComponent<Props, State> {
           {getFieldDecorator('password', {
             rules: [{ required: true, message: '请输入密码!'}]
           })(
-            <Input prefix={<Icon type="lock" style={{color: 'rgba(0, 0, 0, .25)'}} />} placeholder="请输入密码" />
+            <Input type="password" prefix={<Icon type="lock" style={{color: 'rgba(0, 0, 0, .25)'}} />} placeholder="请输入密码" />
           )}
         </Form.Item>
         <Form.Item>
@@ -73,4 +72,4 @@ class Login extends React.PureComponent<Props, State> {
   }
 }
 
-export default connect(undefined, { sigin })(Form.create()(Login))
+export default Form.create()(Login)

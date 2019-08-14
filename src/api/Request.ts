@@ -1,8 +1,15 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-13 16:56:15
+ * @LastEditTime: 2019-08-14 23:36:33
+ * @LastEditors: Please set LastEditors
+ */
 import * as queryString from 'query-string'
 
 function getRootUrl ():string {
   const dev = process.env.NODE_ENV !== 'production'
-  const rootUrl = dev ? '' : ''
+  const rootUrl = dev ? 'http://localhost:7002' : ''
   return rootUrl
 }
 
