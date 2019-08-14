@@ -1,11 +1,88 @@
 import * as React from 'react'
-import { Row, Col } from 'antd'
+import { Card, Form, Input } from 'antd'
+import { FormComponentProps } from 'antd/lib/form/Form'
 
-const AdverCreate:React.FC = () => {
+export interface IAdverCreateProps extends FormComponentProps {
+  test: string;
+}
+
+const AdverCreate:React.FC<IAdverCreateProps> = (props) => {
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 3 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 8 },
+    },
+  }
+  function handleSubmit () {
+    console.log('-----')
+  }
+  const { getFieldDecorator } = props.form
   return (
-    <Row>
-      <Col><h1>12313123</h1></Col>
-    </Row>
+    <Card>
+      <Form {...formItemLayout} onSubmit={handleSubmit}>
+        <Form.Item label="名称" hasFeedback={true}>
+          {getFieldDecorator('email', {
+            rules: [
+              {
+                type: 'email',
+                message: 'The input is not valid E-mail!',
+              },
+              {
+                required: true,
+                message: 'Please input your E-mail!',
+              },
+            ],
+          })(<Input />)}
+        </Form.Item>
+        <Form.Item label="名称" hasFeedback={true}>
+          {getFieldDecorator('email', {
+            rules: [
+              {
+                type: 'email',
+                message: 'The input is not valid E-mail!',
+              },
+              {
+                required: true,
+                message: 'Please input your E-mail!',
+              },
+            ],
+          })(<Input />)}
+        </Form.Item>
+        <Form.Item label="名称" hasFeedback={true}>
+          {getFieldDecorator('email', {
+            rules: [
+              {
+                type: 'email',
+                message: 'The input is not valid E-mail!',
+              },
+              {
+                required: true,
+                message: 'Please input your E-mail!',
+              },
+            ],
+          })(<Input />)}
+        </Form.Item>
+        <Form.Item label="名称" hasFeedback={true}>
+          {getFieldDecorator('email', {
+            rules: [
+              {
+                type: 'email',
+                message: 'The input is not valid E-mail!',
+              },
+              {
+                required: true,
+                message: 'Please input your E-mail!',
+              },
+            ],
+          })(<Input />)}
+        </Form.Item>
+      </Form>
+    </Card>
   )
 }
-export default AdverCreate
+const WrapperAdverCreateForm = Form.create({name: 'adverCreate'})(AdverCreate)
+export default WrapperAdverCreateForm
