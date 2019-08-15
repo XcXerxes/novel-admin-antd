@@ -12,7 +12,6 @@ type Props = {
 
 export default class AuthorizedRoute extends React.PureComponent<Props> {
   public componentWillMount() {
-    console.log('start=====')
     NProgress.start()
   }
   public componentDidMount() {

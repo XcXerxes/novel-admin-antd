@@ -30,11 +30,9 @@ class Login extends React.PureComponent<Props, State> {
         try {
           const {username, password} = values
           const result = await User.signin({username, password})
-          console.log(result)
-          setTimeout(() => {
-            this.setState({ loading: false })
-            this.props.history.push('/')
-          }, 1500)
+          this.setState({ loading: false })
+          
+          this.props.history.push('/')
         } catch (error) {
           this.setState({ loading: false })
           throw error

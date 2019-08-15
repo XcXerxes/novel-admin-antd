@@ -2,12 +2,12 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-13 16:56:15
- * @LastEditTime: 2019-08-14 23:36:33
+ * @LastEditTime: 2019-08-15 22:55:05
  * @LastEditors: Please set LastEditors
  */
 import * as queryString from 'query-string'
 
-function getRootUrl ():string {
+export function getRootUrl ():string {
   const dev = process.env.NODE_ENV !== 'production'
   const rootUrl = dev ? 'http://localhost:7002' : ''
   return rootUrl
@@ -21,12 +21,12 @@ export default async function sendRequest(path: string, opts: any={}) {
   }
 
   // 请求的参数
-  const qs = (opts.qs && queryString.stringify(opts.qs)) || ''
+  const qs = opts.qs ? `?${queryString.stringify(opts.qs)}` : ''
 
   const response = await fetch(
     `${getRootUrl()}${path}${qs}`,
     {
-      method: 'POST',
+      method: opts.method || 'post',
       credentials: 'include',
       mode: 'cors',
       ...opts,

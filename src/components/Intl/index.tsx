@@ -3,7 +3,7 @@ import { IntlProvider, addLocaleData } from 'react-intl'
 import * as zh_CN from 'react-intl/locale-data/zh'
 import * as en_US from 'react-intl/locale-data/en'
 import { chooseLocale, getAntdLocal } from '../../locales/util'
-import { LocaleProvider } from 'antd'
+import { ConfigProvider } from 'antd'
 
 addLocaleData ([...zh_CN, ...en_US])
 
@@ -15,11 +15,11 @@ const Intl:React.FC<IIntlProps> = (props) => {
   const localeData = chooseLocale('zh_CN')
   const localeAntdData = getAntdLocal('zh_CN')
   return (
-    <LocaleProvider locale={localeAntdData}>
+    <ConfigProvider locale={localeAntdData}>
       <IntlProvider locale="zh" messages={localeData}>
         {props.children}
       </IntlProvider>
-    </LocaleProvider>
+    </ConfigProvider>
   )
 }
 
