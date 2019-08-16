@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Form, Icon, Input, Button } from 'antd'
 import * as styles from './User.scss'
 import * as User from '../../api/User'
+import { setAuth } from '../../redux/actions/user'
 
 type Props = {
   form: any;
@@ -31,8 +32,10 @@ class Login extends React.PureComponent<Props, State> {
           const {username, password} = values
           const result = await User.signin({username, password})
           this.setState({ loading: false })
-          
-          this.props.history.push('/')
+          if (result && result.code === 0){
+            setAuth(result.data.token)
+            this.props.history.push('/')
+          }
         } catch (error) {
           this.setState({ loading: false })
           throw error

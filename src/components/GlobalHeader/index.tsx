@@ -39,7 +39,7 @@ export default class GlobalHeader extends React.PureComponent<Props> {
         <div className={styles.right}>
           <Dropdown overlay={menu}>
             <span className={`${styles.action} ${styles.account}`}>
-              <span className={styles.name}>antony</span>
+              <span className={styles.name}>admin</span>
             </span>
           </Dropdown>
         </div>

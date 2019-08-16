@@ -73,7 +73,7 @@ class Analysis extends React.PureComponent<Props, State> {
   }
   public async componentDidMount() {
     try {
-      await this.props.fakeChart()
+      // await this.props.fakeChart()
       setTimeout(() => {
         this.setState({
           percent: 78
@@ -81,7 +81,7 @@ class Analysis extends React.PureComponent<Props, State> {
       }, 2000)
       console.log(this.props)
     } catch (error) {
-      throw error
+      // throw error
     }
   }
   public isActive = (type:string):any => {

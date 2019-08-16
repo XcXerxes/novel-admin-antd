@@ -27,7 +27,7 @@ class Monitor extends React.PureComponent<Props> {
     try {
       await this.props.fetchMonitor()
     } catch (error) {
-      throw error
+      // throw error
     }
   }
   public render () {

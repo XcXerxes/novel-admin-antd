@@ -141,10 +141,11 @@ const AdverCreate:React.FC<IAdverCreateProps> = (props) => {
    * @param info 
    */
   const uploadHandleChange = (info:any) => {
+    setFileList(info.fileList)
     if (info.file.status === 'uploading') {
       setLoading(true)
-      return
     }
+    console.log('========================', info)
     if (info.file.status === 'done') {
       setLoading(false)
       setImgUrl(info.file.name)

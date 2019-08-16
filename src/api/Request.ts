@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-13 16:56:15
- * @LastEditTime: 2019-08-15 22:55:05
+ * @LastEditTime: 2019-08-16 19:19:15
  * @LastEditors: Please set LastEditors
  */
 import * as queryString from 'query-string'
@@ -37,7 +37,7 @@ export default async function sendRequest(path: string, opts: any={}) {
   const text = await response.text()
   if (response.status >= 400) {
     console.error(text)
-    throw new Error(response.statusText)
+    console.error(response.statusText)
   }
   try {
     const data = JSON.parse(text)

@@ -2,10 +2,11 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-13 16:56:16
- * @LastEditTime: 2019-08-13 22:28:52
+ * @LastEditTime: 2019-08-16 17:14:25
  * @LastEditors: Please set LastEditors
  */
 import * as dayjs from 'dayjs'
+import queryString from 'query-string'
 
 function getRelation(str1:string, str2:string) {
   if (str1 === str2) {
@@ -128,4 +129,12 @@ export function getTimeDistance(type:string) {
 
 export function fixedZero(val:number) {
   return val * 1 < 10 ? `0${val}` : val
+}
+
+export function getQueryPath(path:string = '', query = {}) {
+  const search = queryString.stringify(query);
+  if (search.length) {
+    return `${path}?${search}`
+  }
+  return path
 }

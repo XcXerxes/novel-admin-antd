@@ -91,6 +91,12 @@ export const getRouterData = ():RouterDataProp => {
     '/': {
       component: dynamicWrapper(() => import('../layouts/BasicLayout'))
     },
+    '/adver/adver-list': {
+      component: dynamicWrapper(() => import('../views/Adver/AdverList'))
+    },
+    '/adver/adver-create': {
+      component: dynamicWrapper(() => import('../views/Adver/AdverCreate'))
+    },
     '/dashboard/analysis': {
       component: dynamicWrapper(() => import('../views/Dashboard/Analysis'))
     },
@@ -106,12 +112,6 @@ export const getRouterData = ():RouterDataProp => {
     },
     '/user/login': {
       component: dynamicWrapper(() => import('../views/User/Login'))
-    },
-    '/adver/adver-list': {
-      component: dynamicWrapper(() => import('../views/Adver/AdverList'))
-    },
-    '/adver/adver-create': {
-      component: dynamicWrapper(() => import('../views/Adver/AdverCreate'))
     },
     '/exception/403': {
       component: dynamicWrapper(() => import('../views/Exception/403'))

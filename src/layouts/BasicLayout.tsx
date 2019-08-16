@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Layout } from 'antd'
-import { Switch } from 'react-router-dom'
+import { Layout, Modal, message } from 'antd'
+import { Switch, Redirect } from 'react-router-dom'
 import { getMenuData } from '../common/menu'
 import DocumentTitle from 'react-document-title'
 import { ContainerQuery } from 'react-container-query'
@@ -11,8 +11,10 @@ import GlobalHeader from '../components/GlobalHeader'
 import logo from '../assets/images/logo.svg'
 import { BreadcrumbContext } from '../common/breadcrumbContext'
 import Authorized from '../utils/Authorized'
+import { logout } from '../api/User'
+import { removeToken } from '../utils/auth'
 
-const { AuthorizedRoute } = Authorized
+const { AuthorizedRoute, check } = Authorized
 
 const { Content, Header } = Layout
 
@@ -64,6 +66,7 @@ type Props = {
   match?: any;
   location?: any;
   routerData?: any;
+  history: any;
   collapsed: boolean;
 }
 type State = {
@@ -91,17 +94,56 @@ class BasicLayout extends React.PureComponent<Props, State> {
   }
   public handleMenuClick = (param:{key:string}) => {
     const { key } = param
+    const { history } = this.props
     if (key === 'user') {
       console.log(key)
     } else if (key === 'setting') {
       console.log(key)
     } else if (key === 'logout') {
-      console.log(key)
+      Modal.confirm({
+        title: '提示',
+        content: '确认要退出吗?',
+        async onOk() {
+          try {
+            const result = await logout()
+            if (result && result.code === 0) {
+              message.success(result.message || '退出成功')
+              removeToken()
+              history.replace('/user/login')
+            } else {
+              message.error(result.message || '退出失败')
+            }
+          } catch (error) {
+            throw error
+          }
+        }
+      })
     }
+  }
+  public getBaseRedirect = () => {
+    // According to the url parameter to redirect
+    // 这里是重定向的,重定向到 url 的 redirect 参数所示地址
+    const urlParams = new URL(window.location.href);
+
+    const redirect = urlParams.searchParams.get('redirect');
+    // Remove the parameters in the url
+    if (redirect) {
+      urlParams.searchParams.delete('redirect');
+      window.history.replaceState(null, 'redirect', urlParams.href);
+    } else {
+      const { routerData } = this.props;
+      // get the first authorized route path in routerData
+      const authorizedPath = Object.keys(routerData).find(
+        item => check(routerData[item].authority, item) && item !== '/'
+      );
+      return authorizedPath
+    }
+    return redirect
   }
   public render() {
     const {location, match, routerData} = this.props
     const { collapsed } = this.state
+    const baseRedirect:any = this.getBaseRedirect()
     const layout = (
       <Layout>
         <SiderMenu 
@@ -131,6 +173,7 @@ class BasicLayout extends React.PureComponent<Props, State> {
                   authority={item.authority}
                 />
               ))}
+              <Redirect exact={true} from="/" to={baseRedirect} />
             </Switch>
           </Content>
         </Layout>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Table, Modal, message, Spin } from 'antd'
+import { Card, Table, Modal, message, Spin, Button } from 'antd'
 import { getAdvers, deleteAdverById } from '../../api/Adver'
 import dayjs from 'dayjs'
 
@@ -123,6 +123,10 @@ const AdverList:React.FC<IAdverListProps> = (props) => {
   function onChange (currentPage: number) {
     setPage(currentPage)
   }
+  // 发布广告
+  function addAdver () {
+    props.history.push('/adver/adver-create')
+  }
   useEffect(() => {
     getList()
   }, ['page'])
@@ -151,6 +155,11 @@ const AdverList:React.FC<IAdverListProps> = (props) => {
   return (
     <Spin spinning={deleteLoading}>
       <Card>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '15px 10px'}}>
+          <Button icon="plus" onClick={addAdver}>
+            发布广告
+          </Button>
+        </div> 
         <Table
           rowKey="id"
           loading={loading}
